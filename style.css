@@ -1,0 +1,649 @@
+/* Reset Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base Styles */
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Header Styles */
+.header {
+  min-height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(images/duncan\ background.jpg);
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden; /* Prevents content from overflowing */
+}
+
+/* Hover Styles for Course, Event, and Testimonial Containers */
+.course,
+.event,
+.testimonial {
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.course:hover,
+.event:hover,
+.testimonial:hover {
+  background-color: #007bff; /* Blue background color */
+  color: #ffffff; /* White text color */
+}
+
+/* Adjustments for Text Color on Hover */
+.course:hover h3,
+.event:hover h3,
+.testimonial:hover h3,
+.course:hover p,
+.event:hover p,
+.testimonial:hover p,
+.testimonial:hover span {
+  color: #ffffff; /* White text color */
+}
+
+/* Add your CSS animations here */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px); /* Start off-screen above */
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(10px); /* Bounce slightly */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Final position */
+  }
+}
+
+header h1 {
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards; /* Apply the animation */
+}
+
+.nav-links ul li,
+nav img {
+  opacity: 0;
+  transform: translateX(-20px); /* Start off-screen to the left */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.nav-links ul li.animate,
+nav img.animate {
+  opacity: 1;
+  transform: translateX(0); /* Slide in from the left */
+}
+
+
+
+nav {
+  display: flex;
+  padding: 2% 6%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav img {
+  width: 120px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+nav img:hover {
+  transform: scale(1.1);
+}
+
+.nav-links {
+  flex: 1;
+  text-align: right;
+}
+
+.nav-links ul {
+  list-style: none;
+  display: inline-flex;
+}
+
+.nav-links ul li {
+  margin-right: 15px;
+}
+
+.nav-links ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-links ul li a:hover {
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: larger;
+  color: rgb(162, 198, 255);
+}
+
+.nav-links ul li::after {
+  content: '';
+  width: 0%;
+  height: 2px;
+  background: #fca522;
+  display: block;
+  margin: auto;
+  transition: 0.5s;
+}
+
+.nav-links ul li:hover::after {
+  width: 100%;
+}
+
+.text-box {
+  width: 90%;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  transition: transform 0.5s ease;
+}
+
+.text-box:hover {
+  transform: translate(-50%, -55%); /* Move slightly up on hover */
+}
+
+.text-box h1 {
+  font-size: 62px;
+  transition: font-size 0.5s ease;
+}
+
+.text-box p {
+  margin: 10px 0 40px;
+  font-size: 14px;
+  color: white;
+}
+
+.hero-btn {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  border: 1px solid white;
+  padding: 12px 34px;
+  font-size: 13px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden; /* Ensure overflow is hidden for the pseudo-element */
+}
+
+.hero-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  background-color: #ff8113; /* Orange background color */
+  z-index: -1; /* Ensure it's behind the button text */
+  transition: height 0.3s ease, top 0.3s ease; /* Transition the height and top properties */
+}
+
+.hero-btn:hover::before {
+  height: 100%; /* Expand the pseudo-element to full height on hover */
+  top: 0; /* Move the pseudo-element to the top to simulate filling up */
+}
+
+/* Make the fill disappear by filling up when not hovering */
+.hero-btn:not(:hover)::before {
+  height: 0;
+  top: 100%; /* Move the pseudo-element to the bottom to simulate filling up */
+}
+
+
+nav.fa {
+  display: none;
+}
+
+@media (max-width: 700px) {
+  .text-box h1 {
+    font-size: 20px;
+  }
+
+  .nav-links ul li {
+    display: block;
+    margin-right: 0;
+  }
+
+  .nav-links {
+    position: absolute;
+    background: #f44336;
+    height: 100vh;
+    width: 200px;
+    top: 0;
+    right: -200px;
+    text-align: left;
+    z-index: 2;
+    transition: 1s;
+  }
+
+  nav .fa {
+    display: block;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  .nav-links ul {
+    padding: 30px;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+}
+
+/* Scroll to Top Arrow Styles */
+.scroll-to-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 40px;
+  font-size: 20px;
+  z-index: 1000;
+  transition: opacity 0.3s;
+}
+
+.scroll-to-top:hover {
+  opacity: 0.8;
+}
+
+/* Mode Toggle Button Styles */
+.toggle-button {
+  padding: 0;
+  width: 60px;
+  height: 30px;
+  background-color: #ccc; /* Light gray background color */
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s;
+  z-index: 1; /* Ensure the button stays above the text */
+}
+
+.toggle-button::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background-color: #fff; /* White circle */
+  border-radius: 50%;
+  transition: transform 0.3s;
+  z-index: 2; /* Ensure the knob stays above the text */
+}
+
+/* Text styles */
+.mode-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  align-items: center; /* Align button and text vertically */
+}
+
+.toggle-label {
+  margin-right: 10px; /* Add spacing between button and text */
+  font-size: 14px; /* Adjust font size as needed */
+  color: #000; /* Text color */
+}
+
+
+.dark-mode .toggle-button {
+  background-color: #555; /* Dark gray background color for dark mode */
+}
+
+.dark-mode .toggle-button::before {
+  transform: translateX(30px); /* Move the white circle to the right for dark mode */
+}
+
+.dark-mode .video-thumbnail h3 {
+  color: white; /* Change the color to white or any other color that contrasts with the dark background */
+}
+
+
+.toggle-button:focus {
+  outline: none; /* Remove focus outline */
+}
+
+.dark-mode .course:hover,
+.dark-mode .event:hover,
+.dark-mode .testimonial:hover {
+  background-color: #ff8113; /* Orange background color */
+  color: #ffffff; /* White text color */
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #222; /* Dark gray background color */
+  color: #fff; /* White text color */
+}
+
+.dark-mode .courses-section {
+  background-color: #333; /* Darker gray background color for courses section */
+}
+
+.dark-mode .course,
+.dark-mode .event,
+.dark-mode .testimonial {
+  background-color: #444; /* Dark gray background color for containers */
+  border-color: #666; /* Border color for containers */
+}
+
+.dark-mode .nav-links ul li a {
+  color: #fff; /* White text color for navigation links */
+}
+
+
+
+/* Section Styles */
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.courses-container,
+.events-container,
+.testimonial-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.course,
+.event,
+.testimonial {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.course:hover,
+.event:hover,
+.testimonial:hover {
+  transform: translateY(-5px);
+}
+
+.course img,
+.event img,
+.testimonial img {
+  width: 100%;
+  height: 200px; /* Adjust height as needed */
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.course-content,
+.event-content,
+.testimonial-content {
+  padding: 20px;
+}
+
+.course h3,
+.event h3,
+.testimonial h3 {
+  margin-bottom: 10px;
+}
+
+.course p,
+.event p,
+.testimonial p {
+  margin-bottom: 20px;
+}
+
+.testimonial span {
+  font-style: italic;
+}
+
+.events-section {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.events-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+.courses-section {
+  opacity: 0;
+  transform: translateX(-50px); /* Initially, move from the left side */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.courses-section.in-view {
+  opacity: 1;
+  transform: translateX(0); /* Move to the center */
+}
+
+.courses-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three columns */
+  grid-gap: 20px; /* Spacing between grid items */
+  
+}
+
+.course {
+  /* Your course styles */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.course:hover {
+  transform: translateX(5px); /* Move slightly to the right on hover */
+}
+
+.testimonials-section {
+  opacity: 0;
+  transform: translateY(50px); /* Initially, move from the bottom */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.testimonials-section.in-view {
+  opacity: 1;
+  transform: translateY(0); /* Move to the center */
+}
+
+.testimonial {
+  /* Your testimonial styles */
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.testimonial:hover {
+  transform: translateY(-5px); /* Move slightly up on hover */
+}
+
+.testimonial img {
+  width: 100%;
+  height: auto; /* Ensure images maintain aspect ratio */
+  max-height: 200px; /* Adjust the maximum height as needed */
+  object-fit: contain;
+}
+
+.video-thumbnails {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.video-thumbnail {
+  position: relative;
+  width: 300px;
+  overflow: hidden;
+  height: 100%;
+  width: auto;
+}
+
+.video-thumbnail img {
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.video-thumbnail:hover img{
+
+  transform: scale(1.1);
+}
+
+.video-thumbnail .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.video-thumbnail:hover .overlay {
+  opacity: 1;
+}
+
+.video-thumbnail .overlay i {
+  color: white;
+  font-size: 48px;
+}
+
+.video-thumbnail h3 {
+  margin-top: 10px;
+  text-align: center;
+  color: #333;
+}
+
+
+.social-icons {
+  display: flex;
+  justify-content: space-between;
+  width: 50px; /* Adjust the width of the container as needed */
+  margin: 0 auto; /* Center the container */
+  align-items: center;
+}
+
+.social-icons a {
+  display: inline-block;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-icons a:hover {
+  transform: scale(1.2); /* Adjust the scale factor as needed */
+}
+
+.social-icons img {
+  width: 50px;
+  height: 50px;
+}
+
+/* Footer Section Styles */
+footer {
+  background-color: #ff8a15; /* Dark blue background color */
+  color: #fff; /* White text color */
+  padding: 50px 0; /* Adjust as needed */
+}
+
+.footer-grid_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer h1 {
+  transition: color 0.3s ease; /* Smooth color transition */
+  margin-right: 12px;
+}
+
+.footer h1:hover {
+  color: #007bff; /* Blue color on hover */
+}
+
+/* Footer Styles */
+.footer-logo {
+  margin-right: 20px; /* Adjust margin as needed */
+  display: flex; /* Use flexbox for centering */
+  align-items: center; /* Center vertically */
+}
+
+.footer-logo img {
+  max-width: 100px; /* Set maximum width for the logo */
+  height: auto; /* Ensure aspect ratio is maintained */
+
+}
+
+.socials-text {
+  font-size: 20px; /* Adjust font size */
+  margin-left: 10px; /* Add spacing between logo and text */
+}
+
+.socials-text:hover{
+
+  color: #007bff;
+  transition: 0.5s;
+  transition: ease-out 1s;
+}
+
+
+.social-icons img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10%; /* Make the social media icons round */
+  transition: transform 0.1s ease-in-out;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2); /* Zoom effect on hover */
+}
+
+
